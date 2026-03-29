@@ -1,15 +1,30 @@
-model_configuration:
+model:
   embed_dim: 300
   hidden_dim: 256
+  vocab_size: null
   num_answers: 50
-  training_epochs: 20
+
+training:
+  num_epochs: 20
   batch_size: 32
   learning_rate: 0.001
-  dataset_name: flaviagiammarino/vqa-rad
+  train_test_split: 0.8
+  max_sequence_length: 20
+
+dataset:
+  name: "flaviagiammarino/vqa-rad"
+  split: "train"
   top_answers: 50
-  blip2_model: Salesforce/blip2-flan-t5-xl
-  translator: facebook/nllb-200-distilled-600M
-  supported_languages:
+
+device:
+  use_cuda: true
+
+models:
+  blip2: "Salesforce/blip2-flan-t5-xl"
+  translator: "facebook/nllb-200-distilled-600M"
+
+languages:
+  supported:
     - en
     - hi
     - te

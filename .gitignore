@@ -1,16 +1,35 @@
+# Python
 __pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+
+# Models (too large)
 *.pth
 *.pkl
 *.bin
+
+# Data
 data/
 *.jpg
 *.jpeg
 *.png
-*.gif
-*.bmp
-*.tiff
-*.log
-*.lock
-*.egg-info/
-*.DS_Store
+*.zip
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
 Thumbs.db
+
+# Logs
+*.log
+logs/
