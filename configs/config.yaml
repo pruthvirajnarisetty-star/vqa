@@ -1,0 +1,18 @@
+model_configuration:
+  embed_dim: 300
+  hidden_dim: 256
+  num_answers: 50
+  training_epochs: 20
+  batch_size: 32
+  learning_rate: 0.001
+  dataset_name: flaviagiammarino/vqa-rad
+  top_answers: 50
+  blip2_model: Salesforce/blip2-flan-t5-xl
+  translator: facebook/nllb-200-distilled-600M
+  supported_languages:
+    - en
+    - hi
+    - te
+    - ta
+    - kn
+    - ml
