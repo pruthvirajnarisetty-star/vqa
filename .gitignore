@@ -1,0 +1,16 @@
+__pycache__/
+*.pth
+*.pkl
+*.bin
+data/
+*.jpg
+*.jpeg
+*.png
+*.gif
+*.bmp
+*.tiff
+*.log
+*.lock
+*.egg-info/
+*.DS_Store
+Thumbs.db
