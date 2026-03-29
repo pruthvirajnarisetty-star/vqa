@@ -8,7 +8,6 @@ import io
 
 app = FastAPI()
 
-# Enable CORS
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -17,7 +16,6 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Initialize pipeline
 pipeline = VQAPipeline(
     model_path="vqa_custom_model.pth",
     vocab_path="vocab.pkl",
@@ -33,21 +31,12 @@ async def predict(
     question: str = Form(...),
     image: UploadFile = File(...)
 ):
-    """
-    Predict answer from image and question
-    """
     try:
-        # Read image
         image_data = await image.read()
         image_pil = Image.open(io.BytesIO(image_data))
-        
-        # Save temporarily
         temp_path = "/tmp/temp_image.jpg"
         image_pil.save(temp_path)
-        
-        # Get prediction
         answer = pipeline.predict(temp_path, question)
-        
         return {
             "question": question,
             "answer": answer,
@@ -61,4 +50,9 @@ async def predict(
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 8000))
-    uvicorn.run(app, host="0.0.0.0", port=port)
+    uvicorn.run(
+        app,
+        host="0.0.0.0",
+        port=port,
+        log_level="info"
+    )
